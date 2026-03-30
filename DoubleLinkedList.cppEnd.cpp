@@ -28,15 +28,23 @@ DoubleLinkedList()
 	
 public: 
 
-void InsertAtBegin(int value)
+void InsertAtEnd(int value)
 {
 Node* newNode = new Node(value);	
-if(head != NULL)
+if(head == NULL)
 {
-head->next = head;	
-head->prev = newNode;	
+head = newNode;
+return;
 }	
-	head = newNode;
+Node* temp = head;
+
+while(temp->next != NULL)
+{
+temp = temp->next;	
+}
+
+temp->next = newNode;
+newNode->prev = temp;
 }	
 	
 void Display()
@@ -58,11 +66,11 @@ int main()
 {
 DoubleLinkedList lt;	
 	
-lt.InsertAtBegin(50);
-lt.InsertAtBegin(40);
-lt.InsertAtBegin(30);
-lt.InsertAtBegin(20);
-lt.InsertAtBegin(10);
+lt.InsertAtEnd(10);
+lt.InsertAtEnd(20);
+lt.InsertAtEnd(30);
+lt.InsertAtEnd(40);
+lt.InsertAtEnd(50);
 
 lt.Display();
 	
